@@ -10,31 +10,43 @@
     </head>
     <body>
     	<header>
-            <h1>Please enter a temperature you'd like to convert.</h1>
+            <h1>Please enter a temperature you'd like to convert and choose a conversion method before pressing enter.</h1>
         </header>
 
     	<div>
-    		temp input<br>
-    		<input type="number" name="Temperature">
-    		clear
-    		<input type="reset" name="Clear Button" value="Clear"><br>
 
-    		fahrenheit
-    		<button onclick="toFahrenheit() "></button>
+<!--     		<input type="button" value="Clear" onclick="javascript:eraseText();"> 
+    <textarea id='output' rows=20 cols=90></textarea>
+ -->
+    		
+	    		<br>
+	    		<input id="tempInput" type="number" name="Temperature">
+	    		<button id="tempButton">Enter</button>
 
-    		 and celsius buttons
-    		<button onclick="toCelcius() "></button>
+				<!-- Clear button -->
+	    		<input type="reset" name="Clear Button" value="Clear" onclick="javascript:eraseText();"><br>
+    		
+
+				<div class=radiogroup>
+					<input type="radio" name="radio1" id="toFahr" label="Convert to Fahrenheit">Convert to Fahrenheit<br>
+					<input name="radio1" type="radio" id="toCelc" label="Convert to Celcius">Convert to Celcius<br>
+				</div>
+    	
     		<br>
     		<br>
 
     	</div>
 
     	<div>
-    		Please press the button below to display your converted temperature.<br>
+    		Please press the button below to display your converted temperature.
+            <br>
+            <br>
     	
-    		<input type="button" name="Converter"><br>
-    		The converted temperature is<br>
-    		block temp
+    		<input type="button" onclick="printConverted" name="Converter" id="convert">Convert<br>
+
+    		<br>
+
+    		<div id=convertedTemp></div>
 
 
     	</div>
