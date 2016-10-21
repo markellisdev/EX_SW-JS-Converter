@@ -4,57 +4,34 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Temp Converter</title>
-        <link rel="stylesheet" href="css/style.css">
+        <title>Converter II</title>
+        <link rel="stylesheet" href="main.css">
         <link rel="author" href="humans.txt">
     </head>
     <body>
+
     	<header>
-            <h1>Please enter a temperature you'd like to convert and choose a conversion method before pressing enter.</h1>
-        </header>
+	    	<label>Please enter a temperature and select Fahrenheit or Celcius,<br>according to your input
+	    	</label>
+    	</header>
 
-    	<div>
+    	<br>
 
-<!--     		<input type="button" value="Clear" onclick="javascript:eraseText();"> 
-    <textarea id='output' rows=20 cols=90></textarea>
- -->
-    		
-	    		<br>
-	    		<input id="tempInput" type="number" name="Temperature">
-	    		<button id="tempButton">Enter</button>
+    	<input type="number" id="input" name="Input">
 
-				<!-- Clear button -->
-	    		<input type="reset" name="Clear Button" value="Clear" onclick="javascript:eraseText();"><br>
-    		
-
-				<div class=radiogroup>
-					<input type="radio" name="radio1" id="toFahr" label="Convert to Fahrenheit">Convert to Fahrenheit<br>
-					<input name="radio1" type="radio" id="toCelc" label="Convert to Celcius">Convert to Celcius<br>
-				</div>
-    	
-    		<br>
-    		<br>
-
+    	<div class="radiogroup">
+    		<input type="radio" name="cOrF" id="F">Fahrenheit<br>
+    		<input type="radio" name="cOrF" id="C">Celcius<br>
     	</div>
 
-    	<div>
-    		Please press the button below to display your converted temperature.
-            <br>
-            <br>
-    	
-    		<input type="button" onclick="printConverted" name="Converter" id="convert">Convert<br>
+    	<button name="Submit" type="" id="submit">submit</button>
+    	<button name="Clear" type="reset" id="clear" value="reset">clear</button>
 
-    		<br>
-
-    		<div id=convertedTemp></div>
-
-
+    	<div id="output">
     	</div>
-
-
 
 
         
-        <script src="converter.js"></script>
+        <script src="converter1.js"></script>
     </body>
 </html>
