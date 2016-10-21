@@ -1,66 +1,112 @@
 
-// Created variable for entering temp value
-var button = document.getElementById("tempButton");
+var submit = document.getElementById("submit");
+
+var clear = document.getElementById("clear");
+
+
+<!-- // This function should determine which conversion should
+// happen based on which radio button is selected. -->
+function determineConverter (input) {
+  // console.log("input = ", input);
+  	
+	var F = document.getElementById("F");
+
+	var C = document.getElementById("C");
+
+	// console.log("F and C", F, C);
+	
+	if (F.checked) {
+		// console.log("F", F);
+		toFahrenheit(input);
+	}
+
+	else if (C.checked) {
+		// console.log("C", C);	
+		toCelcius(input);		
+	}
+
+	else {
+		// console.log("nothing")
+		alert("Please select Fahrenheit or Celsius");
+	}
 
 
 
-// Function to capture and store temperature value
+}
 
-function getTemp() {
-	console.log("getTemp");
-	temperature = document.getElementById("tempInput").value;
-      console.log("temperature", temperature);
-   
+function toCelcius (input) {
+	// console.log("input", input);
+	var outputTemp = ((input * 1.8) + 32);
+	outputToDom(outputTemp, "F");
+}
+
+function toFahrenheit (input) {
+	// console.log("input", input);
+	var outputTemp = ((input - 32) * .5556);
+	outputToDom(outputTemp, "C");
+
 }
 
 
+function checkInput (yes) {
+	var input = document.getElementById("input").value;	
+	//console.log(input.value)
+	if (input) {
+		determineConverter(input);
+	}
 
-// Convert temperature to Fahrenheit
+	else {
+		alert("Please enter a number before pressing submit");
+	}
 
-function toFahrenheit() {
-	convTemp = Math.floor(("temperature" * 1.8) + 32);
-	console.log("to F = ", convTemp);
 }
 
-//Convert temperature to Celcius
+function outputToDom (outputTemp, type) {
+	var output = document.getElementById("output");
+	var fixed = outputTemp.toFixed(2);
+	// console.log("outputTemp", fixed, type);
+	if (type === "C") {
 
-function toCelcius() {
-	convTemp = Math.floor(("temperature" -32) * .5556);
-	console.log("to C = ", convTemp)
+		if (outputTemp > 32) {
+			output.innerHTML = "<p class='red'>" + "Your converted temperature is " + fixed + " degrees Celcius.</p>";
+		}
+
+		else if (outputTemp < 0) {
+			output.innerHTML = "<p class='blue'>" + "Your converted temperature is " + fixed + " degrees Celcius.</p>";
+		}
+
+		else {
+		output.innerHTML = "<p class='green'>" + "Your converted temperature is " + fixed + " degrees Celcius.</p>";
+		}	
+	}
+
+	else if (type === "F") {
+
+		if (outputTemp > 90) {
+			output.innerHTML = "<p class='red'>" + "Your converted temperature is " + fixed + " degrees Fahrenheit.</p>";
+		}
+
+		else if (outputTemp < 32) {
+			output.innerHTML = "<p class='blue'>" + "Your converted temperature is " + fixed + " degrees Fahrenheit.</p>";
+		}
+
+		else {
+			output.innerHTML = "<p class='green'>" + "Your converted temperature is " + fixed + " degrees Fahrenheit.</p>";
+		}	
+		
+
+	}
+
 }
 
-//Clear text in temp input field
-
-function eraseText() {
-    document.getElementById("tempInput").value = "";
+function resetForm (button) {
+	// console.log("input", F);
+	document.getElementById("F").checked = false;
+	document.getElementById("C").checked = false;
+	document.getElementById("input").value = "";
 }
 
-//Listen for click in temp field, go to function to capture
+<!-- // Assign a function to be executed when the button is clicked -->
+submit.addEventListener("click", checkInput);
 
-button.addEventListener("click", getTemp);
-
-document.getElementById("toFahr").addEventListener("click", toFahrenheit);
-
-document.getElementById("toCelc").addEventListener("click", toCelcius);
-
-
-
-// If the temperature is greater than 90F/32C the color of the converted temperature should be red.
-// if (convTemp > 90 || convTemp > 32) {
-
-// }
-// If the temperature is less than 32F/0C the color of the converted temperature should be blue.
-// if else (convTemp < 32 || convTemp < 0) {
-
-// }
-
-// For any other temperature, the color should be green.
-// else () {
-
-// }
-
-// Popup displaying converted temp
-
-
-
-// window.addEventListener("keyup", getTemp);
+clear.addEventListener("click", resetForm);
